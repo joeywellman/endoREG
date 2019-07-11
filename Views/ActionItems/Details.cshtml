@@ -1,0 +1,91 @@
+﻿@model endoREG_MVC.Models.ActionItem
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<br />
+<br />
+<br />
+<h1 class="font-weight-bold">Action Item Details:</h1>
+
+<div>
+    <h4 class="align-middle blockquote">@Html.DisplayFor(model => model.Title)</h4>
+    @if (Model.ActionItemImage != null)
+    {
+        <img src="data:image;base64,@System.Convert.ToBase64String(Model.ActionItemImage)" class="align-middle border border-primary" />
+    }
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IsActive):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CompliancePlan) Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CompliancePlan.Label)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DateAssigned):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DateAssigned)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Title):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Weight):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Weight)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DaysToComplete):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DaysToComplete)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Location):
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Location)
+        </dd>
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.ActionItemImage)
+            </dt>
+            <dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.ActionItemImage)
+            </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Complete)?:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Complete)
+        </dd>
+        @*<dt class = "col-sm-2">
+                @Html.DisplayNameFor(model => model.User)
+            </dt>*@
+        @*<dd class = "col-sm-10">
+                @Html.DisplayFor(model => model.User.Id)
+            </dd>*@
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ActionItemId" class="font-weight-bold text-dark" style="vertical-align: middle; font-size: 14.5pt"><i class="material-icons tiny">edit</i> Edit Action Item (Above)</a><br /> <br />
+    <a asp-action="Index" class="font-weight-bold text-dark" style="vertical-align: middle; font-size: 14.5pt"><i class="material-icons tiny">arrow_back</i> Back to Action Item List</a>
+</div>

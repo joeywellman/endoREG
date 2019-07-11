@@ -1,0 +1,29 @@
+﻿@model endoREG_MVC.Models.CompliancePlanViewModels.CompliancePlanDetailViewModel;
+
+@{
+    ViewData["Title"] = "Details";
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<br />
+<br />
+<br />
+<h1 class="font-weight-bold">Compliance Plan Details:</h1>
+
+<div>
+    <h4 class="align-middle blockquote">@Html.DisplayFor(model => model.CompliancePlan.Label)</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CompliancePlan.Label) Name:
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CompliancePlan.Label)
+        </dd>
+    </dl>
+</div>
+<div>
+    <br />
+    <a asp-action="Edit" asp-route-id="@Model.CompliancePlan.CompliancePlanId" class="font-weight-bold text-dark" style="vertical-align: middle; font-size: 14.5pt"><i class="material-icons tiny">edit</i> Edit</a><br /> <br />
+    <a asp-controller="CompliancePlans" asp-action="Index" class="font-weight-bold text-dark" style="vertical-align: middle; font-size: 14.5pt"><i class="material-icons tiny">arrow_back</i> Back to List</a>
+</div>
+

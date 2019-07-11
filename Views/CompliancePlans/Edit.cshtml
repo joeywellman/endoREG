@@ -1,0 +1,39 @@
+﻿@model endoREG_MVC.Models.CompliancePlan
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<br />
+<br />
+<br />
+<h1 class="font-weight-bold">Edit Compliance Plan:</h1>
+
+<h4 class="align-middle blockquote">@Html.DisplayFor(model => model.Label)</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="CompliancePlanId" />
+            <div class="form-group">
+                <label asp-for="Label" class="control-label font-weight-bold"></label> <b>Name:</b>
+                <input asp-for="Label" class="form-control" />
+                <span asp-validation-for="Label" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="font-weight-bold btn btn-dark" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <br />
+    <a asp-action="Index" class="font-weight-bold text-dark" style="vertical-align: middle; font-size: 14.5pt"><i class="material-icons tiny">arrow_back</i> Back to List</a>
+    <br />
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

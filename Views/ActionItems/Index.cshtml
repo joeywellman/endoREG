@@ -1,0 +1,121 @@
+﻿@model IEnumerable<endoREG_MVC.Models.ActionItem>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<br />
+<br />
+<br />
+<center>
+    <a href="https://localhost:44386/Home/Privacy"><img src="https://drive.google.com/uc?export=view&id=1NDRmWEdVnftt5IaGAzu6Q9tBXaUSeAF0" style="width: 280px; max-width: 100%; height: auto" title="Click for the endoREG (nucCORE) Privacy Policy." class="text-center" /></a>
+    <br />
+    <br />
+    <h1 class="text-center font-weight-bold" style="color: black">Compliance Plan Action Items</h1>
+    <br />
+    <br />
+</center>
+<p class="" style="vertical-align: middle; font-size: 14.5pt">
+    <a asp-action="Create" class="font-weight-bold text-dark"><i class="material-icons tiny">add_box</i> Create New Action Item</a>
+</p>
+<form>
+    <input type="text" name="searchQuery" placeholder="Search Action Items..." class="text-center">
+    <button class="btn btn-dark" type="submit"><b>Search</b></button>
+</form>
+<br />
+<table id="myTable" class="table border border-primary">
+    <thead class="table border border-primary">
+        <tr class="text-center border border-primary">
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 10pt">
+                @Html.DisplayNameFor(model => model.IsActive)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.DateAssigned)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.CompliancePlan) Name
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.ActionItemImage)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.Location)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.DaysToComplete)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.Weight) (Priority)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                @Html.DisplayNameFor(model => model.Complete)
+            </th>
+            <th class="align-middle border border-secondary" style="vertical-align: middle; font-size: 11pt">
+                View / Update
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.User)
+                </th>*@
+        </tr>
+    </thead>
+    <tbody class="table border border-primary">
+        @foreach (var item in Model)
+        {
+            <tr class="text-center">
+                <td class="align-middle border-right" style="vertical-align: middle; font-size: 14pt">
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                </td>
+                <td class="align-middle border-right font-weight-bold" style="vertical-align: middle; font-size: 11pt">
+                    @Html.DisplayFor(modelItem => item.DateAssigned)
+                </td>
+                <td class="align-middle border-right" style="vertical-align: middle; font-size: 10pt">
+                    @Html.DisplayFor(modelItem => item.CompliancePlan.Label)
+                </td>
+                <td class="align-middle border-right medium" style="vertical-align: middle; font-size: 9pt">
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td class="align-middle border-right medium blockquote" style="vertical-align: middle; font-size: 8pt">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                @if (item.ActionItemImage != null)
+                {
+                    <td class="align-middle border-right">
+                        <a asp-action="Details" asp-route-id="@item.ActionItemId" class="align-middle"><img src="data:image;base64,@System.Convert.ToBase64String(item.ActionItemImage)" width="100" height="125" class="align-middle grayscale" style="filter: grayscale(100%)" /></a>
+
+                    </td>}
+                <td class="align-middle border-right" style="vertical-align: middle; font-size: 12pt">
+                    @Html.DisplayFor(modelItem => item.Location)
+                </td>
+                <td class="align-middle border-right font-weight-bold" style="vertical-align: middle; font-size: 16pt">
+                    @Html.DisplayFor(modelItem => item.DaysToComplete)
+                </td>
+                <td class="align-middle border-right" style="vertical-align: middle; font-size: 12pt">
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ActionItemImage)
+                    </td>*@
+                <td class="align-middle border-right">
+                    @Html.DisplayFor(modelItem => item.Complete)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.User.Id)
+                    </td>*@
+                <td class="align-middle text-black-50 font-weight-bold" style="vertical-align: middle; font-size: 7pt">
+                    <a asp-action="Edit" asp-route-id="@item.ActionItemId" class="font-weight-bold text-dark"><i class="material-icons tiny">edit</i><br />Edit</a><br />
+                    <br />
+                    <a asp-action="Details" asp-route-id="@item.ActionItemId" class="font-weight-bold text-dark"><i class="material-icons tiny">details</i><br />Details</a><br />
+                    <br />
+                    <a asp-action="Delete" asp-route-id="@item.ActionItemId" class="font-weight-bold text-dark"><i class="material-icons tiny">delete</i><br />Delete</a><br />
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
