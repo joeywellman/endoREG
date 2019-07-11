@@ -10,6 +10,7 @@ using endoREG_MVC.Models.SimpleReportViewModels;
 using Microsoft.AspNetCore.Identity;
 using endoREG_MVC.Models;
 using System.Data.SqlClient;
+using endoREG_MVC.Models.ActionItemViewModels;
 
 namespace endoREG_MVC.Controllers
 {
@@ -67,6 +68,26 @@ namespace endoREG_MVC.Controllers
 
         //}
         public IActionResult Pie()
+        {
+            //var rnd = new Random();
+            var lstModel = new List<SimpleReportViewModel>();
+
+            lstModel.Add(new SimpleReportViewModel
+            {
+                DimensionOne = "Complete",
+                Quantity = 0
+            });
+            lstModel.Add(new SimpleReportViewModel
+            {
+                DimensionOne = "Incomplete",
+                Quantity = 1
+            });
+
+            return View(lstModel);
+
+        }
+
+        public IActionResult Pie2()
         {
             //var rnd = new Random();
             var lstModel = new List<SimpleReportViewModel>();
