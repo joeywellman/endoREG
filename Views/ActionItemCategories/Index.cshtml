@@ -12,8 +12,8 @@
             <a href="https://localhost:44386/Home/Privacy"><img src="https://drive.google.com/uc?export=view&id=1NDRmWEdVnftt5IaGAzu6Q9tBXaUSeAF0" style="width: 280px; max-width: 100%; height: auto" title="Click for the endoREG (nucCORE) Privacy Policy." class="text-center" /></a>
             <br />
             <br />
-            <h1 class="section-title h1">@Html.DisplayNameFor(model => model.Label)s</h1>
-            <h2>with Action Items</h2>
+            <h1 class="section-title h1 text-center font-weight-bold" style="color: black">@Html.DisplayNameFor(model => model.Label)s</h1>
+            <h2 class="font-weight-bold" style="color: black">with Action Items</h2>
             <br />
             <br />
         </center>
@@ -23,8 +23,8 @@
                 <div class="col-xs-12 col-sm-6 col-md-4">
                     <div class="card">
                         <div class="card-body">
-                            <h6 class="card-title">
-                                <b>@Html.ActionLink(item.Label, "Details", new { id = item.CompliancePlanId })</b> (<b style="font-size:80%;">@Html.DisplayFor(modelItem => item.DaysToComplete)</b>)
+                            <h6 class="card-title text-center font-weight-bold" style="color: black">
+                                <b class="text-center font-weight-bold" style="color: black">@Html.ActionLink(item.Label, "Details", new { id = item.CompliancePlanId })</b> (<b style="font-size:80%;">@Html.DisplayFor(modelItem => item.DaysToComplete)</b>)
                             </h6>
                             <ol type="1">
                                 @foreach (var actionItem in item.ActionItems)
