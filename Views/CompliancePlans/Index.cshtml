@@ -1,0 +1,51 @@
+﻿@model IEnumerable<endoREG_MVC.Models.CompliancePlan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<br />
+<br />
+<br />
+<center>
+    <a href="https://localhost:44386/Home/Privacy"><img src="https://drive.google.com/uc?export=view&id=1NDRmWEdVnftt5IaGAzu6Q9tBXaUSeAF0" style="width: 280px; max-width: 100%; height: auto" title="Click for the endoREG (nucCORE) Privacy Policy." class="text-center" /></a>
+    <br />
+    <br />
+    <h1 class="text-center font-weight-bold" style="color: black">Compliance Plans</h1>
+</center>
+
+<p class="text-black-100" style="vertical-align: middle; font-size: 14.5pt">
+    <a asp-action="Create" class="font-weight-bold text-dark"><i class="material-icons tiny">add_box</i> Create New Compliance Plan</a>
+</p>
+<form>
+    <input type="text" name="searchQuery" placeholder="Search Compliance Plans...">
+    <button class="btn btn-dark" type="submit"><b>Search</b></button>
+</form>
+<br />
+<table class="table border border-primary">
+    <thead class="table border border-primary">
+        <tr class="">
+            <th class="align-middle border border-secondary">
+                @Html.DisplayNameFor(model => model.Label) Name
+            </th>
+            <th class="align-middle border border-secondary text-center" style="vertical-align: middle; font-size: 11pt">
+                View / Update
+            </th>
+        </tr>
+    </thead>
+    <tbody class="table border border-primary">
+        @foreach (var item in Model)
+        {
+            <tr lass="text-center">
+                <td class="align-middle border-right" style="vertical-align: middle; font-size: 12pt">
+                    @Html.ActionLink(item.Label, "Details", new { id = item.CompliancePlanId })
+                </td>
+                <td class="align-right text-black-50 font-weight-bold text-center">
+                    <a asp-action="Edit" asp-route-id="@item.CompliancePlanId" class="font-weight-bold"><i class="material-icons tiny">edit</i> Edit</a> &nbsp;&nbsp;;&nbsp;;&nbsp;
+                    <a asp-action="Details" asp-route-id="@item.CompliancePlanId" class="font-weight-bold"><i class="material-icons tiny">details</i> Details</a> &nbsp;&nbsp;;&nbsp;;&nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.CompliancePlanId" class="font-weight-bold"><i class="material-icons tiny">delete</i> Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

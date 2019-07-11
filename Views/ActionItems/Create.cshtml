@@ -1,0 +1,76 @@
+﻿@model endoREG_MVC.Models.ActionItemViewModels.ActionItemViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<br />
+<h1>Create</h1>
+
+<h4>Action Item</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="actionItem.IsActive" /> @Html.DisplayNameFor(model => model.actionItem.IsActive)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="actionItem.CompliancePlanId" class="control-label"></label>
+                <select asp-for="actionItem.CompliancePlanId" class="form-control" asp-items=@Model.compliancePlans></select>
+                <span asp-validation-for="actionItem.CompliancePlanId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="actionItem.Title" class="control-label"></label>
+                <input asp-for="actionItem.Title" class="form-control" />
+                <span asp-validation-for="actionItem.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="actionItem.Description" class="control-label"></label>
+                <input asp-for="actionItem.Description" class="form-control" />
+                <span asp-validation-for="actionItem.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="actionItem.Weight" class="control-label"></label>
+                <input asp-for="actionItem.Weight" class="form-control" />
+                <span asp-validation-for="actionItem.Weight" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="actionItem.DaysToComplete" class="control-label"></label>
+                <input asp-for="actionItem.DaysToComplete" class="form-control" />
+                <span asp-validation-for="actionItem.DaysToComplete" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="actionItem.UserId" class="control-label"></label>
+                    <select asp-for="actionItem.UserId" class ="form-control" asp-items="ViewBag.UserId"></select>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="actionItem.Location" class="control-label"></label>
+                <input asp-for="actionItem.Location" class="form-control" />
+                <span asp-validation-for="actionItem.Location" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="actionItem.ActionItemImage" class="control-label">Upload A Product Image</label>
+                <input type="file" name="ActionItemImage" asp-for="actionItem.ActionItemImage" accept=".png, .jpg, .tif, .jpeg, .gif" />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="actionItem.Complete" /> @Html.DisplayNameFor(model => model.actionItem.Complete)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
